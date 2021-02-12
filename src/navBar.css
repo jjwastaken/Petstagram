@@ -1,0 +1,35 @@
+.navbar{
+    height: 50%;
+    /* background-color: #e6d6e1; */
+    background-image: url(./insta-background.jpg);
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+    display: flex;
+}
+
+.logo{
+    background-image: url(./logo.JPG);
+    background-position: center;
+    background-size: 110%;
+}
+
+.logoHeader{
+    text-align: left;
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 2.5em;
+    position: relative;
+    width: 75%;
+}
+
+.searchBar{
+    text-align: right;
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 1em;
+    position: relative;
+}
+
+.clearfix{
+    clear:both
+}
+
