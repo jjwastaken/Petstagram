@@ -1,0 +1,62 @@
+.metacontainer {
+
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  width: 700px;
+  height: 500px;
+  border-radius: 20px 20px;
+  position: relative;
+}
+
+.container {
+  background-image: url(./insta-background.jpg);
+  padding: 20px;
+  border-radius: 0px 0px 20px 20px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.comment{
+  border-radius: 20px;
+  width: 50%;
+  padding: 10px;
+  font-size: 12px;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background: white;
+}
+
+#thumbsup {
+    background-image: url(./thumbsup.png);
+}
+
+#heart {
+    background-image: url(./heart.png);
+}
+
+#laugh {
+    background-image: url(./laugh.png);
+}
+
+#send {
+  margin-left: 10px;
+  width: 15%;
+  background-image: url(./send.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+button:active {
+  transform: translateY(3px);
+}
