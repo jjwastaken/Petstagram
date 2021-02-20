@@ -5,7 +5,6 @@ import './main.css';
 
 class Main extends React.Component {
   render() {
-    const status = 'Next player: X';
     return (
       <div>
         <NavBar />
