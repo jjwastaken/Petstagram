@@ -7,6 +7,11 @@ class Comment_Reaction extends React.Component {
     render() {
         return (
             <div class='metacontainer'>
+            	<img class="picture" width="60" height="60" alt="" />
+            	<div class="name">CrazyDaisy</div>
+            	<div class="sample">Hi my name is Daisy and I am seven months old! I am
+            	worlds naughtiest pupper and I have severe separation anxiety. 
+            	My favorite snack is my moms shoes!</div>
                 <div class='container'>
                     <button id='thumbsup'></button>
                     <button id='heart'></button>
@@ -20,3 +25,9 @@ class Comment_Reaction extends React.Component {
     }
 }
 export default Comment_Reaction;
+
+
+/*  FOR USE LATER:   THIS IS HOW TO MAKE A POST
+            	<textarea class="write" placeholder= 'Make a post!'>
+            	</textarea>
+            	*/
