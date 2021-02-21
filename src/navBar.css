@@ -5,6 +5,7 @@
     background-position: center;
     background-size: 100%;
     position: relative;
+    border-radius: 0 0 20px 20px;
     display: flex;
 }
 
@@ -12,6 +13,7 @@
     background-image: url(./logo.JPG);
     background-position: center;
     background-size: 110%;
+    border-radius: 20px 20px;
 }
 
 .logoHeader{
@@ -26,6 +28,13 @@
     text-align: right;
     font-family: 'proxima-nova', sans-serif;
     font-size: 1em;
+    position: relative;
+}
+
+.searchButton{
+    background-image: url(./search.JPG);
+    background-position: center;
+    background-size: 90%;
     position: relative;
 }
 

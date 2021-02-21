@@ -6,12 +6,13 @@ import './main.css';
 
 class Main extends React.Component {
   render() {
-    const status = 'Next player: X';
     return (
-      <div>
+      <div class="bodybackground">
         <NavBar />
-        <div>Welcome to Petstagram!</div>
-        <Comment_Reaction />
+        <div>
+          <Comment_Reaction />
+          <Comment_Reaction />
+        </div>
       </div>
     );
   }

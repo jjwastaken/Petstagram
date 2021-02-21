@@ -6,7 +6,8 @@
   height: 500px;
   border-radius: 20px 20px;
   position: relative;
-}
+  margin: 20px auto 0 auto; /* top right bottom left */
+ }
 
 .container {
   background-image: url(./insta-background.jpg);

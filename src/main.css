@@ -1,0 +1,5 @@
+.bodybackground{
+    background-image: url(./background.JPG);
+    height: 100%;
+    position: relative;
+}
