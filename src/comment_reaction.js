@@ -25,9 +25,3 @@ class Comment_Reaction extends React.Component {
     }
 }
 export default Comment_Reaction;
-
-
-/*  FOR USE LATER:   THIS IS HOW TO MAKE A POST
-            	<textarea class="write" placeholder= 'Make a post!'>
-            	</textarea>
-            	*/
