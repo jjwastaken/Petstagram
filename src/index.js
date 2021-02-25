@@ -1,17 +1,53 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+	
+function Window() 
+{	
+	return <body class = "container">
+		<div class = "shadow"> </div>
+		
+		<div class = "window"> 
+			<h1 class = "header"> User Login </h1>	
+				
+			<form>
+				<h2 class = "label"> EMAIL </h2>
+				<input type="form"/>
+			</form>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+			<form>
+				<h3 class ="label"> PASSWORD </h3>
+				<input type="form"/>
+			</form>
+			
+			<a class = "newAccount" href = "http://localhost:3001/"> Register an account </a>
+				
+			<input type="submit" value="Submit"/>
+		</div>
+		
+		<img class = "logo" src = "https://i.imgur.com/JavpkLL.png" width="300"/>
+		
+	</body>;
+}
+
+class Signin extends React.Component
+{
+	renderWindow()
+	{
+		return Window();
+	}
+	
+	render()
+	{
+		return (
+			<div>
+				{this.renderWindow()}
+			</div>
+		);
+	}
+}
+
+// ========================================
+
+ReactDOM.render(<Signin />, document.getElementById("root"));
