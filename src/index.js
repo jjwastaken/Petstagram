@@ -1,34 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import NavBar from './navbar.js';
-import Comment_Reaction from './comment_reaction.js';
-import Post from './post.js';
-import './main.css';
-
-class Main extends React.Component {
-  render() {
-    return (
-      <div class="bodybackground">
-        <NavBar />
-        <div>
-          <Post />
-        </div>
-        <div>
-          <Comment_Reaction />
-          <Comment_Reaction />
-        </div>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(
-  
-  <Main />,
-  document.getElementById('root')
-);
-=======
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import Main from './main.js';
@@ -57,4 +28,3 @@ class Home extends React.Component
 }
 
 ReactDOM.render( <Home />, document.getElementById('root'));
->>>>>>> origin/ConnectionUpdate

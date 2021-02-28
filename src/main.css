@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 .bodybackground{
     background-image: url(./background.JPG);
     height: 100%;
     position: relative;
 }
-=======
 html,body
 {
     width: 100%;
@@ -14,4 +12,3 @@ html,body
 }
 
 
->>>>>>> origin/ConnectionUpdate

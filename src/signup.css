@@ -29,6 +29,7 @@
 	
 	.signup-container
 	{
+		margin: -2% 0 0 -33%;/* top right bottom left */
 		position: relative;
 	}
 	
