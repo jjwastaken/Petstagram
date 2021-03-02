@@ -25,10 +25,20 @@
 }
 
 .searchBar{
-    text-align: right;
+    /*text-align: right;*/
     font-family: 'proxima-nova', sans-serif;
     font-size: 1em;
     position: relative;
+}
+
+/*.menu-options {
+    display: flex;
+}*/
+
+.profileButton {
+    /*text-align: left;*/
+    position: relative;
+    color: black;
 }
 
 .searchButton{
@@ -39,6 +49,6 @@
 }
 
 .clearfix{
-    clear:both
+    clear:both;
 }
 

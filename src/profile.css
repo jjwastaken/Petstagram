@@ -1,167 +1,46 @@
-/*.profile-page {
-    margin-bottom: 20px;
-    max-width: 500px;
-    background-color: 2px rgb(11, 81, 143);
-  }
-  
-  .profile-page-wrapper {
-    position: relative;
-    background-color: rgb(170, 38, 187);
-  }
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
 
-  .profile-pic {
-    border-radius: 3em;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    height: 5em;
-    width: 5em;
-    transform: translate(-50%, -50%);
-  }
+.profile-page {
+  margin: auto;
+  background-color: white;
+  width: 500px;
+  height: 100%;
+  position: relative;
+  border-radius: 3em;
+}
 
-  .profile-description {
-      position: absolute;
-      top: 80%;
-      left: 60%;
-      background-color:rgb(105, 158, 204);
-      height: 150px;
-      width: 300px;
-  }*/
+.profile-picture {
+  margin: auto;
+  background-image: url("./defaultpic.png");
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 5em;
+  position: relative;
+}
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-@import url("https://fonts.googleapis.com/css?family=Merriweather");
+.follow-button {
+  background-color: #fae5e4;
+  font-size: x-large;
+  color: black;
+  border: none;
+  border-radius: 5em;
+  margin-right: 10px;
+  box-shadow: 0px 0px;
+}
 
-  :root {
-    --background-color-form: #fcfcfc;
-  
-    --color: #707070;
-    --color-h1: #3e3e3e;
-    --color-name: #000000;
-    --color-tag: #6b6b6b;
-    --color-button: #ffffff;
-  
-    --font-family-montserrat: "Montserrat", sans-serif;
-    --font-family-merriweather: "Merriweather", serif;
-  
-    --font-size-small: 0.75em;
-    --font-size-normal: 1em;
-    --font-size-large: 1.25em;
-  
-    --border-color: #c5c5c5;
-  
-    --primary: #f8cfb4;
-  }
-  
-  .container {
-    color: var(--color);
-    font-family: var(--font-family-montserrat);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .user-profile {
-    margin-bottom: 20px;
-    max-width: 500px;
-    width: 700px;
-    
-  }
-  
-  .user-profile__wrapper {
-    position: relative;
-  }
-
-  /*.user-profile__image_wrapper {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100px;
-    height: 250px;
-  }*/
-  
-  .user-profile__background {
-    background: url("./catprofpic.png")
-      center center no-repeat;
-    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
-    opacity: 0.4;
-    height: 250px;
-  }
-
-  /*.user-profile__name-wrapper {
-      position: absolute;
-      top: 0%;
-      left: 105px;
-      width: 400px;
-      height: 250px;
-  }*/
-  
-  .user-profile__name {
-    text-align: left;
-    position: absolute;
-    top: 25%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-  }
-
-  #username{
-    color: var(--color-name);
-    font-size: var(--font-size-large);
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  #description{
-    color: var(--color-tag);
-    font-family: var(--font-family-merriweather);
-    font-size: var(--font-size-small);
-  }
-  
-  
-  .user-profile__image {
-    background-image: url("./catprofpic.png");
-    background-size: cover;
-    border-radius: 5em;
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    height: 7em;
-    width: 7em;
-  }
-  
-  .user-profile__follow {
-    font-family: var(--font-family-merriweather);
-    margin-bottom: 20px;
-    position: relative;
-    top: -30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .user-profile__follow > p {
-    text-align: center;
-    margin-top: 0;
-  }
-  
-  .user-profile__follow > p > p {
-    margin: 0;
-  }
-  
-  .user-profile__add {
-    background-color: var(--primary);
-    border-radius: 25px;
-    height: 3em;
-    width: 5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  #follow-button {
-      background-color: var(--primary);
-      color: var(--color-button);
-      border-width: 0px;
-  }
+.user-info {
+  text-align: center;
+  /*align-items: center;
+  align-content: center;*/
+}
+.follow-info {
+  display: flex;
+  justify-content: space-around;
+}
