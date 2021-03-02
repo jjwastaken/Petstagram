@@ -12,6 +12,7 @@ class NavBar extends React.Component {
                 <img class="logo" width="60" height="60" alt="" />
                 <div class="logoHeader">Petstagram</div>
                 <div class="menu-options">
+                    <Link to='./main' class="profileButton">Home Page</Link>
                     <Link to='/profile' class="profileButton">My Profile</Link>
                     <div class="searchBar">
                         <form class="form-inline">

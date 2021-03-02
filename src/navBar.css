@@ -39,6 +39,7 @@
     /*text-align: left;*/
     position: relative;
     color: black;
+    padding: 5px;
 }
 
 .searchButton{
