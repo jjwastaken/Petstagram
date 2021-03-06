@@ -17,7 +17,7 @@ class Profile extends React.Component {
             <div class="profile-page">
                 <div class="user-info">
                     <div className="profile-picture" />
-                    <h2>@username</h2>
+                    <h2>{this.props.username}</h2>
                     <h4>bio</h4>
                     <div className="follow-info">
                         <h3>Following</h3>

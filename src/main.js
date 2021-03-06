@@ -10,6 +10,26 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class Main extends React.Component 
 {
+	constructor(props) {
+		super(props);
+		this.state = {
+			apiResponse: "",
+		};
+	}
+
+	callAPI() {
+		// request a username, then get the corresponding user object
+		const username = 'albertbabycat';
+		fetch("http://localhost:3001/profiles/" + username)
+			.then(res => res.json())
+			.then(res => this.setState({ apiResponse: res }));
+	}
+
+	componentWillMount() {
+		this.callAPI();
+	}
+
+	// pass in a user object to the Profile component
 	render() 
 	{
 		return (
@@ -21,7 +41,7 @@ class Main extends React.Component
 						<PostFeed />
 					</Route>
 					<Route exact path='/profile'>
-						<Profile />
+						<Profile username={this.state.apiResponse.username} />
 					</Route>
 				</Switch>
 				</div>
