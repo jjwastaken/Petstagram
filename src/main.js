@@ -14,15 +14,15 @@ class Main extends React.Component
 		super(props);
 		this.state = {
 			apiResponse: "",
+			self: null,
 		};
 	}
 
+
 	callAPI() {
-		// request a username, then get the corresponding user object
-		const username = 'albertbabycat';
-		fetch("http://localhost:3001/profiles/" + username)
+		fetch("http://localhost:3001/self")
 			.then(res => res.json())
-			.then(res => this.setState({ apiResponse: res }));
+			.then(res => this.setState({ self: res }));
 	}
 
 	componentWillMount() {
@@ -41,7 +41,7 @@ class Main extends React.Component
 						<PostFeed />
 					</Route>
 					<Route exact path='/profile'>
-						<Profile username={this.state.apiResponse.username} />
+						<Profile user={this.state.self} self={this.state.self}/>
 					</Route>
 				</Switch>
 				</div>

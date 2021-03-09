@@ -11,12 +11,16 @@ app.use(bodyParser.json());
 const users = [
     {
         username: 'albertbabycat',
-        followers: 2,
-        following: 5,
+        // followers and following can be arrays of usernames
+        // will just have to deal with retrieval elsewhere
+        followers: 0,
+        following: 2,
         id: 0,
     }
 ];
 let currentId = 1;
+
+var self = null;
 
 // configure firebase app
 
@@ -39,6 +43,23 @@ app.get('/profiles/:username', (request, response) => {
     // how to send one specific user profile (i.e. the actual user's profile?)
 });
 
+// save self
+app.post('/self', (request, response) => {
+    const username = request.body.username;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            self = users[i]
+            response.send({ success: true })
+            return;
+        }
+    }
+});
+
+// get self
+app.get('/self', (request, response) => {
+    response.send(self);
+})
+
 app.get('/profiles', (req, res) => {
     res.send(users);
 })
@@ -50,6 +71,8 @@ app.post('/profiles', (request, response) => {
     users.push(user);
     response.send({ success: true });
 });
+
+// app.patch or whatever to modify existing user
 
 app.listen(3001, () => {
     console.log('Server has started');

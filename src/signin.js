@@ -7,6 +7,34 @@ import './signin.css';
 
 class Signin extends React.Component
 {
+	constructor(props) {
+		super(props);
+		this.state = {
+			username: '',
+		}
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(e) {
+		this.setState({username: e.target.value})
+	}
+
+	saveSelf() {
+		const data = {
+			username: this.state.username,
+		}
+		fetch("http://localhost:3001/self", {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+			.then(res => res.json())
+			.then(res => console.log(res))
+	}
+
 	render()
 	{
 		return (
@@ -18,7 +46,7 @@ class Signin extends React.Component
 							
 						<form>
 							<h2 class = "signin-label"> EMAIL </h2>
-							<input type="form_i"/>
+							<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
 						</form>
 				
 						<form>
@@ -28,7 +56,7 @@ class Signin extends React.Component
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
 						
-						<Link type="submit_i" to = {"/main"} style={{color: '#282b30'}}> Submit </Link>
+						<Link type="submit_i" to = {"/main"} onClick={() => this.saveSelf()} style={{color: '#282b30'}}> Submit </Link>
 
 					</div>
 					

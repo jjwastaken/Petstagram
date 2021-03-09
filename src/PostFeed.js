@@ -4,6 +4,11 @@ import Comment_Reaction from './comment_reaction.js';
 import Post from './post.js';
 
 class PostFeed extends React.Component {
+
+  // when you click on a person's username/pic, should link you
+  // to their profile
+  // but how do you link your own user ....
+  // when you sign in you should store your own self somewhere
     render() {
         return (
             <div className="landing-page">
