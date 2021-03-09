@@ -10,18 +10,25 @@ class Signup extends React.Component
 		super(props)
 		this.state = {
 			username: '',
+			password: ''
 		};
 		this.handleChange = this.handleChange.bind(this);
+		this.handleChangePass = this.handleChangePass.bind(this);
 	}
 
 	handleChange(e) {
 		this.setState({username: e.target.value})
 	}
 
+	handleChangePass(e) {
+		this.setState({password: e.target.value})
+	}
+
 	// maybe move this to a separate file
 	addNewUser() {
 		const data = {
 			username: this.state.username,
+			password: this.state.password,
 			followers: [],
 			following: [],
 		}
@@ -53,7 +60,7 @@ class Signup extends React.Component
 			
 					<form>
 						<h3 class ="signup-label"> PASSWORD </h3>
-						<input type="form_i"/>
+						<input type="form_i" value={this.state.password} onChange={this.handleChangePass}/>
 					</form>
 				
 					<form>
