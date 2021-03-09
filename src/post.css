@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .post{
-   
-    background: white;
-  	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+	border: 2px solid #1e2124;
+	font-family: 'VT323', monospace;
+    background: pink;
   	width: 700px;
   	height: 200px;
-  	border: 1px;
   	border-radius: 20px 20px;
   	position: relative;
   	margin: 20px auto 0 auto; /* top right bottom left */
+    box-shadow: 5px 10px black;
+
 }
 
 .picture{
@@ -16,15 +19,16 @@
     margin: 15px auto 0 30px;
     background-size: 110%;
 	border: 1px white;
+	border-radius: 50px;
 }
 
 .name{
     text-align: left;
-    font-family: "Times New Roman", Times, serif;
 	margin: -50px auto 0 100px;
-    font-size: 1.0em;
+    font-size: 1.2em;
     position: relative;
     width: 200%;
+    font-weight: bold;
 }
 .text {
   padding:30px;
@@ -32,17 +36,18 @@
   height:83%;
   top: 10;
   position: absolute;
+
 }
 
 .comment{
 	margin: auto auto 0 auto;
     text-align: left;
-    font-family: 'proxima-nova', sans-serif;
     font-size: 1em;
     position: relative;
     width: 50%;
     height:100%;
     display: inline-block;
+    border: 2px solid black;
 }
 
 button {
@@ -52,8 +57,8 @@ button {
     border: none;
     border-radius: 20px;
     margin-right: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    background: white;
+    background: aliceblue;
+    font-size: 0.8em;
 }
 
 #submit {

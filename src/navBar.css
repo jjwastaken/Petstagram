@@ -1,24 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .navbar{
+    font-family: 'VT323', monospace;
     height: 50%;
     /* background-color: #e6d6e1; */
-    background-image: url(./insta-background.jpg);
+    background: aliceblue;
     background-position: center;
     background-size: 100%;
     position: relative;
     border-radius: 0 0 20px 20px;
     display: flex;
+    box-shadow: 5px 10px black;
+    border: 2px solid black;
 }
 
 .logo{
     background-image: url(./logo.JPG);
     background-position: center;
     background-size: 110%;
-    border-radius: 20px 20px;
+    border-radius: 20px;
+    border: black;
+    border: 2px solid black;
 }
 
 .logoHeader{
     text-align: left;
-    font-family: 'proxima-nova', sans-serif;
     font-size: 2.5em;
     position: relative;
     width: 75%;
@@ -26,7 +32,6 @@
 
 .searchBar{
     /*text-align: right;*/
-    font-family: 'proxima-nova', sans-serif;
     font-size: 1em;
     position: relative;
 }
@@ -47,9 +52,18 @@
     background-position: center;
     background-size: 90%;
     position: relative;
+    border: 2px solid black;
 }
 
 .clearfix{
     clear:both;
+}
+
+
+.profileButton:hover {
+    color: indianred;
+    background: aliceblue;
+    text-decoration: none;
+    transition: 0.5s;
 }
 
