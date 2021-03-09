@@ -11,12 +11,13 @@ class Profile extends React.Component {
         }
     }
 
-    addFollower() {
-        if (this.state.user === this.state.self) {
+    /*addFollower() {
+        if (this.state.user.username === this.state.self.username) {
             return;
         }
+        fetch('/profiles/:user/:self')
         // call express patch function or whatever
-    }
+    }*/
 
     render() {
         return (

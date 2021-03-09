@@ -22,8 +22,8 @@ class Signup extends React.Component
 	addNewUser() {
 		const data = {
 			username: this.state.username,
-			followers: 0,
-			following: 0,
+			followers: [],
+			following: [],
 		}
 		fetch("http://localhost:3001/profiles", {
 			method: 'POST',
