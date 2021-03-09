@@ -10,6 +10,26 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class Main extends React.Component 
 {
+	constructor(props) {
+		super(props);
+		this.state = {
+			apiResponse: "",
+			self: null,
+		};
+	}
+
+
+	callAPI() {
+		fetch("http://localhost:3001/self")
+			.then(res => res.json())
+			.then(res => this.setState({ self: res }));
+	}
+
+	componentWillMount() {
+		this.callAPI();
+	}
+
+	// pass in a user object to the Profile component
 	render() 
 	{
 		return (
@@ -21,7 +41,7 @@ class Main extends React.Component
 						<PostFeed />
 					</Route>
 					<Route exact path='/profile'>
-						<Profile />
+						<Profile user={this.state.self} self={this.state.self}/>
 					</Route>
 				</Switch>
 				</div>

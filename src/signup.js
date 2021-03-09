@@ -6,6 +6,37 @@ import { Link } from 'react-router-dom';
 
 class Signup extends React.Component
 {
+	constructor(props) {
+		super(props)
+		this.state = {
+			username: '',
+		};
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(e) {
+		this.setState({username: e.target.value})
+	}
+
+	// maybe move this to a separate file
+	addNewUser() {
+		const data = {
+			username: this.state.username,
+			followers: [],
+			following: [],
+		}
+		fetch("http://localhost:3001/profiles", {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+			.then(res => res.json())
+			.then(res => console.log(res))
+	}
+
 	render()
 	{
 		return (
@@ -17,7 +48,7 @@ class Signup extends React.Component
 						
 					<form>
 						<h2 class = "signup-label"> EMAIL </h2>
-						<input type="form_i"/>
+						<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
 					</form>
 			
 					<form>
@@ -30,7 +61,7 @@ class Signup extends React.Component
 						<input type="form_i"/>
 					</form>
 					
-					<Link type = "submit_i" to = {"/signin"}  style={{color: '#282b30'}}> Submit </Link>
+					<Link type="submit_i" to = {"/signin"} onClick={() => this.addNewUser()} style={{color: '#282b30'}}> Submit </Link>
 
 				</div>
 				<img class = "signup-logo" src = {logo} width="75"/>

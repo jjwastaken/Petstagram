@@ -11,6 +11,7 @@ import Profile from './Profile.js';
 
 class Home extends React.Component
 {	
+
 	render()
 	{		
 		return (		
@@ -21,7 +22,7 @@ class Home extends React.Component
 						<Route path="/signin" component={Signin}/>
 						<Route path="/signup" component={Signup}/>
 						<Route path="/main" component = {Main}/>
-            <Route path="/profile" component={Profile}/>
+            			<Route path="/profile" component={Profile}/>
 					</Switch>
 				</div>
 			</BrowserRouter>

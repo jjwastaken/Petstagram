@@ -6,22 +6,29 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            profpic: props.profpic,
-            desc: props.desc,
-            numFollowers: 2,
-            numFollowing: 0,
+            user: props.user,
+            self: props.self,
         }
     }
+
+    /*addFollower() {
+        if (this.state.user.username === this.state.self.username) {
+            return;
+        }
+        fetch('/profiles/:user/:self')
+        // call express patch function or whatever
+    }*/
+
     render() {
         return (
             <div class="profile-page">
                 <div class="user-info">
                     <div className="profile-picture" />
-                    <h2>@username</h2>
+                    <h2>{this.state.user.username}</h2>
                     <h4>bio</h4>
                     <div className="follow-info">
                         <h3>Following</h3>
-                        <button className="follow-button">+</button>
+                        <button className="follow-button" onClick={() => this.addFollower()}>+</button>
                         <h3>Followers</h3>
                     </div>
                     <div className="profile-posts">
