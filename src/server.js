@@ -17,7 +17,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-const profiles = db.collection('profiles')
+const profiles = db.collection('profiles');
+// const posts = db.collection('posts');
 
 const users = [
     {
@@ -32,7 +33,7 @@ const users = [
 ];
 let currentId = 1;
 
-var self = null;
+var self = {username: "123"};
 
 // configure firebase app
 
@@ -42,35 +43,52 @@ var self = null;
     return ref.once('value').then(snap => snap.val());
 }*/
 
-app.get('/profiles/:username', async (request, response) => {
+app.get('/profiles/:username', (request, response) => {
     const username = request.params.username;
-    const taskRef = await profiles.doc(username).get();
+    //const taskRef = await profiles.doc(username).get();
+    profiles.doc(username)
+        .get()
+        .then(function(doc) {
+            response.send(doc.data())
+        });
     //response.send(request.params.username);
-    for (let i = 0; i < users.length; i++) {
+    /*for (let i = 0; i < users.length; i++) {
         if (users[i].username === username) {
             response.send(users[i]);
             return;
         }
-    }
+    }*/
     //response.send(users[0]);
     // how to send one specific user profile (i.e. the actual user's profile?)
 });
 
 // save self
-app.post('/self', (request, response) => {
+app.post('/self', async (request, response) => {
     const username = request.body.username;
-    for (let i = 0; i < users.length; i++) {
+    /*for (let i = 0; i < users.length; i++) {
         if (users[i].username === username) {
             self = users[i]
             response.send({ success: true })
             return;
         }
-    }
+    }*/
+    const profileRef = await profiles.doc(username).get();
+    self = profileRef.data();
+    response.send( {success: true });
 });
 
 // get self
 app.get('/self', (request, response) => {
-    response.send(self);
+    //response.send({username: "123"});
+    if (self) {
+        profiles.doc(self.username)
+            .get()
+            .then(function(doc) {
+                response.send(doc.data())
+            });
+        /*const profileRef = await profiles.doc(self.username).get();
+        response.send(profileRef.data());*/
+    }
 })
 
 app.get('/profiles', (req, res) => {
@@ -85,6 +103,27 @@ app.post('/profiles', async (request, response) => {
     await profiles.doc(user.username).set(user);
     response.send({ success: true });
 });
+
+app.put('/profiles', (request, response) => {
+    const user = request.body.user;
+    const self = request.body.self;
+    profiles.doc(user)
+        .update({
+            followers: followers.concat([self]),
+        });
+    profiles.doc(self)
+        .update({
+            following: following.concat([user]),
+        })
+})
+
+app.get('/profiles/:username/followers', (request, response) => {
+
+})
+
+app.get('/profiles/:username/following', (request, response) => {
+    
+})
 
 // self follow user
 /*app.post('/profiles/:user/:self', (request, response) => {
