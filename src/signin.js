@@ -182,8 +182,8 @@ class Signin extends React.Component
 				user: response.username, 
 				pw: response.password
 			}, () => { 
-				console.log(this.state.user)
-				console.log(this.state.pw)
+				//console.log(this.state.user)
+				//console.log(this.state.pw)
 			}));
     }
 	
@@ -207,24 +207,7 @@ class Signin extends React.Component
 	
 	click()
 	{
-		if(!this.state.click)
-		{
-			
-			this.setState({ 
-				tempu: this.state.user,
-				tempp: this.state.pw
-			}, () => { 
-			});
-			
-			if (this.state.tempu == "")
-			{
-				console.log(this.state.user)
-			}
-		}
-		else
-		{
-			return 
-		}
+		this.retrieveUser();
 	}
 
 	render()
@@ -249,7 +232,7 @@ class Signin extends React.Component
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
 
-						<Link type="submit_i" to = {page} onClick={() => this.click(), this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
+						<Link type="submit_i" to = {page} onClick={() => this.click()} style={{color: '#282b30'}}> Submit </Link>
 
 					</div>
 					
