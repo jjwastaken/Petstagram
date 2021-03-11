@@ -5,17 +5,18 @@ import ReactDOM from 'react-dom';
 
 class Comment_Reaction extends React.Component {
 
-    /*constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            post: {id: ''},
+            post: this.props.post,
             comment: '',
         }
+        this.handleCommentChange = this.handleCommentChange.bind(this);
     }
 
     // retrieve post information
-    retrievePost() {
-        const postID = this.state.post.id;
+    /*retrievePost() {
+        const postID = this.props.post.text;
         fetch(`http://localhost:3001/posts/${postID}`)
             .then(res => res.json())
             .then(res => this.setState({post: res}))
@@ -23,6 +24,21 @@ class Comment_Reaction extends React.Component {
 
     componentDidMount() {
         this.retrievePost();
+    }*/
+
+    handleCommentChange(e) {
+        this.setState({comment: e.target.value});
+    }
+
+    addNewComment() {
+        fetch('http://localhost:3001/posts', {
+            method: 'PATCH',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({postID: this.state.post.text, comment: this.state.comment})
+        })
     }
 
     // also patch post information to add thumbs up, heart, laugh, comments
@@ -44,15 +60,9 @@ class Comment_Reaction extends React.Component {
 
     handleLaughs(e) {
         this.setState({laughs: this.state.post.laughs + 1});
-    }
-    
-    handleCommentChange(e) {
-        this.setState({comment: e.target.value});
-    }
-
-    updateComments() {
-        
     }*/
+    
+    
 
     render() {
         return (
@@ -64,9 +74,9 @@ class Comment_Reaction extends React.Component {
                     <button id='thumbsup'></button>
                     <button id='heart'></button>
                     <button id='laugh'></button>
-                    <textarea class="comment" placeholder= 'Type here...'>
+                    <textarea class="comment" placeholder= 'Type here...' value={this.state.comment} onChange={this.handleCommentChange}>
                     </textarea>
-                    <button id='send'></button>
+                    <button id='send' onClick={() => this.addNewComment()}></button>
                 </div>
             </div>
         );

@@ -68,12 +68,21 @@ app.get('/posts', (request, response) => {
     });
 })
 
-app.get('/post/:postID', (request, response) => {
+app.get('/posts/:postID', (request, response) => {
     const postID = request.params.postID;
     posts.doc(postID)
         .get()
         .then(snap => {
             response.send(snap.data());
+        })
+})
+
+app.patch('/posts', (request, response) => {
+    const postID = request.body.postID;
+    const comment = request.body.comment
+    posts.doc(postID)
+        .update({
+            comments: admin.firestore.FieldValue.arrayUnion(comment)
         })
 })
 
