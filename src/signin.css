@@ -120,6 +120,7 @@
 		box-shadow: 5px 10px black;
 		border-radius: 15px;
 		visibility: hidden;
-		margin-left: 600px;
 		text-align: center;
+		width: 50%;
+		margin: 60%;
 	}

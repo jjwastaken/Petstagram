@@ -22,6 +22,7 @@ html,body {
 .profile-posts{
   display: inline;
   border: none;
+  margin: auto;
 
 }
 .profile-picture {
@@ -39,6 +40,7 @@ html,body {
   margin-left: 15px;
   position: absolute;
   object-fit: cover;
+  width: 100%;
 
 }
 
@@ -54,7 +56,11 @@ html,body {
 
 .user-info {
   text-align: center;
-
+  border: 3px solid black;
+  border-radius: 3em;
+  box-shadow: 5px 10px black;
+  color: #1e2124;
+  width: 100%;
 }
 
 
