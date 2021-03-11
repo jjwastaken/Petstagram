@@ -20,16 +20,10 @@ const db = admin.firestore();
 const profiles = db.collection('profiles');
 const posts = db.collection('posts');
 
-const comment = [
-    {
-        text: 'text',
-    }
-];
-
 const users = [
     {
-        username: 'albertbabycat',
-        password: '12345',
+        username: '',
+        password: '',
         // followers and following can be arrays of usernames
         // will just have to deal with retrieval elsewhere
         followers: [],
@@ -113,15 +107,13 @@ app.post('/self', async (request, response) => {
 
 // get self
 app.get('/self', (request, response) => {
-    //response.send({username: "123"});
+	const username = request.params.username;
     if (self) {
         profiles.doc(self.username)
             .get()
             .then(snap => {
                 response.send(snap.data())
             });
-        /*const profileRef = await profiles.doc(self.username).get();
-        response.send(profileRef.data());*/
     }
     
 })
@@ -138,16 +130,6 @@ app.post('/profiles', async (request, response) => {
     await profiles.doc(user.username).set(user);
     response.send({ success: true });
 });
-
-app.patch('/profiles', (request, response) => {
-    const username = request.body.username;
-    const post = request.body.post;
-    //console.log(post);
-    profiles.doc(username)
-        .update({
-            posts: admin.firestore.FieldValue.arrayUnion(post)
-        });
-})
 
 /*app.put('/profiles', (request, response) => {
     const user = request.body.user;

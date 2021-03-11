@@ -11,18 +11,27 @@ class Signin extends React.Component
 		super(props);
 		this.state = {
 			username: '',
-			user: null,
+			password: '',
+			user: '',
+			pw: '',
 		}
 		this.handleChange = this.handleChange.bind(this);
+		this.handleChangeP = this.handleChangeP.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(e) {
 		this.setState({username: e.target.value})
 	}
+	
+	handleChangeP(e) {
+		this.setState({password: e.target.value})
+	}
 
 	saveSelf() {
 		const data = {
 			username: this.state.username,
+			password: this.state.password,
 		}
 
 		// this.state.username = username that the user input
@@ -45,8 +54,43 @@ class Signin extends React.Component
 			.then(res => res.json())
 			.then(res => console.log(res))
 	}
+	
+	retrieveUser() {
+        const username = this.state.username;
+        //console.log(username);
+        fetch(`http://localhost:3001/profiles/${username}`)
+			//.then(response => console.log(response.json()))
+            .then(response => response.json())
+            .then(response => this.setState({ 
+				user: response.username, 
+				pw: response.password
+			}, () => {
+				//console.log(this.state.user)
+				//console.log(this.state.pw)
+			}));
+    }
+	
+	checkOnClick()
+	{
+		if (this.state.user == this.state.username) 
+		{
+			if (this.state.pw == this.state.password)
+			{
+				this.handleSubmit()
+				return "/main"
+			}
+		}
+		return "/"
+	}
+	
+	handleSubmit()
+	{
+		return this.saveSelf();
+	}
+
 	render()
 	{
+		var page = this.checkOnClick();
 		return (
 				<body class = "signin-container">
 					<div class = "signin-shadow"> </div>
@@ -61,13 +105,13 @@ class Signin extends React.Component
 				
 						<form>
 							<h3 class ="signin-label"> PASSWORD </h3>
-							<input type="form_i"/>
+							<input type="form_i" value={this.state.password} onChange={this.handleChangeP}/>
 						</form>
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
 						
-						<Link type="submit_i" to = {"/main"} onClick={() => this.saveSelf()} style={{color: '#282b30'}}> Submit </Link>
-
+						<Link type="submit_i" to = {page} onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
+						
 					</div>
 					
 					<img class = "signin-logo" src = {logo} width="75"/>
