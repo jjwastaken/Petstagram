@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.JPG'; 
 import './signin.css';
 
@@ -249,12 +249,16 @@ class Signin extends React.Component
 							
 						<form>
 							<h2 class = "signin-label"> USERNAME </h2>
-							<input type="form_i" value={this.state.username} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
+							<div class = "username">
+							<input type="form_control" value={this.state.username} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
+							</div>
 						</form>
 
 						<form>
 							<h3 class ="signin-label"> PASSWORD </h3>
-							<input type="form_i" value={this.state.password} onChange={this.handleChangeP} onkeydown={() => this.reset_click}/>
+							<div class = "username">
+							<input type="password" value={this.state.password} onChange={this.handleChangeP} onkeydown={() => this.reset_click}/>
+							</div>
 						</form>
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>

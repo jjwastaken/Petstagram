@@ -81,17 +81,23 @@ class Signup extends React.Component
 						
 					<form>
 						<h2 class = "signup-label"> USERNAME </h2>
-						<input type="text" value={this.state.username} onChange={this.handleChange}/>
+						<div class = "usernames">
+						<input type="form_control" value={this.state.username} onChange={this.handleChange}/>
+						</div>
 					</form>
 			
 					<form>
 						<h3 class ="signup-label"> PASSWORD </h3>
-						<input type="text" value={this.state.password} onChange={this.handleChangePass}/>
+						<div class = "usernames">
+						<input type="password" value={this.state.password} onChange={this.handleChangePass}/>
+						</div>
 					</form>
 				
 					<form>
 						<h3 class ="signup-label"> VERIFY PASSWORD </h3>
-						<input id='ending' type="text" value={this.state.password2} onChange={this.handleChangePass2}/>
+						<div class = "verifypass">
+						<input id='ending' type="password" value={this.state.password2} onChange={this.handleChangePass2}/>
+						</div>
 					</form>
 					
 					<Link type="submit_i" onClick={() => this.checkPassword()} style={{color: '#282b30'}}> Submit </Link>

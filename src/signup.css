@@ -109,3 +109,26 @@
         border-radius: 15px;
         visibility: hidden;
 	}
+
+	.usernames{
+		margin: 0 0 0 0;/* top right bottom left */
+		width: 50%;
+		padding: 5px 10px;
+		margin-left: 100px;
+		border: 2px solid pink;
+		border-radius: 20px;
+		outline:none;
+		background-color: white;
+	}
+
+	.verifypass{
+		margin: 0 0 0 0;/* top right bottom left */
+		width: 50%;
+		padding: 5px 10px;
+		margin-left: 100px;
+		border: 2px solid pink;
+		border-radius: 20px;
+		outline:none;
+		background-color: white;
+	}
+	

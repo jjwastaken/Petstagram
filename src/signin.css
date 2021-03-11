@@ -124,3 +124,13 @@
 		width: 50%;
 		margin: 60%;
 	}
+
+	.username{
+		width: 50%;
+		padding: 5px 10px;
+		margin-left: 28px;
+		border: 2px solid pink;
+		border-radius: 20px;
+		outline:none;
+		background-color: white;
+	}
