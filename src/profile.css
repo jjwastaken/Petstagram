@@ -8,8 +8,12 @@ html,body {
 
 .profile-page {
   margin: auto;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   background-color: white;
-  width: 500px;
   height: 100%;
   position: relative;
   border-radius: 3em;
@@ -24,6 +28,13 @@ html,body {
   border-radius: 5em;
   position: relative;
 }
+.profPosts {
+  height: 1000px;
+  margin-left: 15px;
+  position: absolute;
+  object-fit: cover;
+
+}
 
 .follow-button {
   background-color: #fae5e4;
@@ -37,6 +48,7 @@ html,body {
 
 .user-info {
   text-align: center;
+  
   /*align-items: center;
   align-content: center;*/
 }
