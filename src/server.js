@@ -62,6 +62,7 @@ app.post('/posts', async (request, response) => {
 
 app.get('/posts', (request, response) => {
     db.collection("posts")
+    .orderBy("time", "desc")
     .get()
     .then(function(querySnapshot) {
         response.send(querySnapshot.docs.map(doc => doc.data()));
