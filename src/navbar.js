@@ -35,13 +35,17 @@ class NavBar extends React.Component {
         this.setState({search: e.target.value});
     }
 
-    retrieveUser() {
+    async retrieveUser() {
         const username = this.state.search;
         console.log(username);
         fetch(`http://localhost:3001/profiles/${username}`)
             .then(response => response.json())
-            .then(response => this.setState({ userSearch: response, usersname: response.username }));
-        console.log(this.state.userSearch);
+            //.then(response => this.setState({ userSearch: response, usersname: response.username }));
+            .then(response => this.setState({userSearch: response, usersname: response.username}));
+        /*const response = await fetch(`http://localhost:3001/profiles/${username}`);
+        const json = await response.json();
+        this.setState({userSearch: json, usersname: json.username});
+        console.log(this.state.userSearch);*/
     }
     
     /*handleSubmit() {
