@@ -34,12 +34,12 @@ class Post extends React.Component {
 	addNewPost() {
 		var text = {
 			text: this.state.text,
-            id: 1,
             username: this.state.self.username,
             numLikes: 0,
             numHearts: 0,
             numLaughs: 0,
             comments: [],
+            time: Date().toLocaleString(),
 		}
 		fetch("http://localhost:3001/posts", {
 			method: 'POST',
