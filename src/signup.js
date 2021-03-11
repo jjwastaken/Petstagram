@@ -37,8 +37,7 @@ class Signup extends React.Component
 		const data = {
 			username: this.state.username,
 			password: this.state.password,
-			followers: [],
-			following: [],
+			posts: [],
 		}
 		fetch("http://localhost:3001/profiles", {
 			method: 'POST',

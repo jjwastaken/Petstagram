@@ -20,6 +20,12 @@ const db = admin.firestore();
 const profiles = db.collection('profiles');
 const posts = db.collection('posts');
 
+const comment = [
+    {
+        text: 'text',
+    }
+];
+
 const users = [
     {
         username: 'albertbabycat',
@@ -42,6 +48,15 @@ var self = {username: "allison"};
     const ref = firebaseApp.database().ref('facts');
     return ref.once('value').then(snap => snap.val());
 }*/
+
+app.post('/posts', async (request, response) => {
+    const post = request.body;
+    post.id = currentId;
+    currentId++;
+    comment.push(post);
+    await posts.doc(post.text).set(post);
+    response.send({ success: true });
+});
 
 app.get('/profiles/:username', (request, response) => {
     const username = request.params.username;
@@ -103,6 +118,16 @@ app.post('/profiles', async (request, response) => {
     await profiles.doc(user.username).set(user);
     response.send({ success: true });
 });
+
+app.patch('/profiles', (request, response) => {
+    const username = request.body.username;
+    const post = request.body.post;
+    //console.log(post);
+    profiles.doc(username)
+        .update({
+            posts: admin.firestore.FieldValue.arrayUnion(post)
+        });
+})
 
 /*app.put('/profiles', (request, response) => {
     const user = request.body.user;

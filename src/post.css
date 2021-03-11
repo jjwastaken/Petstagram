@@ -57,9 +57,11 @@ button {
     border: none;
     border-radius: 20px;
     margin-right: 10px;
+    margin-left: 5px;
     background: aliceblue;
     font-size: 0.8em;
 }
+
 
 #submit {
   margin-left: 610px;

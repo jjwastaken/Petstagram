@@ -5,15 +5,67 @@ import Logo from "./logo.JPG";
 import ReactDOM from 'react-dom';
 
 class Post extends React.Component {
+    constructor(props) {
+		super(props)
+		this.state = {
+			text: '',
+            self: {username: ''},
+		};
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+    retrieveSelf() {
+        fetch("http://localhost:3001/self")
+			.then(response => response.json())
+			.then(response => this.setState({ self: response }))
+    }
+
+    componentDidMount() {
+        this.retrieveSelf();
+    }
+
+	handleChange(e) {
+		this.setState({text: e.target.value})
+	}
+
+	addNewPost() {
+		const text = {
+			text: this.state.text,
+            id: 1,
+            username: this.state.self.username,
+		}
+		fetch("http://localhost:3001/posts", {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(text)
+		})
+			.then(res => res.json())
+			.then(res => console.log(res));
+        
+        // update posts of self too
+        fetch("http://localhost:3001/profiles", {
+            method: 'PATCH',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username: this.state.self.username, post: text})
+        })
+	}
+
     render() {
         return (
             <div class='post'>
             	<img class="picture" width="60" height="60" alt="" />
-            	<div class="name">CrazyDaisy</div>
+            	<div class="name">{this.state.self.username}</div>
             	<div class='text'>
-                    <textarea class="comment" placeholder= 'Make a post!'>
-                	</textarea>
-                    <button id='submit'>Post</button>
+                    <form>
+                            <input type="comment" class="comment" placeholder= 'Make a post!' value={this.state.text} onChange={this.handleChange}/>
+                            <button id='button' onClick={() => this.addNewPost()}>Post</button>
+                    </form>
                 </div>
             </div>
         );

@@ -49,10 +49,8 @@ class Comment_Reaction extends React.Component {
         return (
             <div class='metacontainer'>
             	<img class="picture" width="60" height="60" alt="" />
-            	<div class="name">Crazy Daisy</div>
-            	<div class="sample">Hi my name is Daisy and I am seven months old! 
-                I am worlds naughtiest pupper and I have severe separation anxiety. 
-                My favorite snack is my moms shoes!</div>
+            	<div class="name">{this.props.post.username}</div>
+            	<div class="sample">{this.props.post.text}</div>
                 <div class='container'>
                     <button id='thumbsup'></button>
                     <button id='heart'></button>

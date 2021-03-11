@@ -13,8 +13,12 @@ class Profile extends React.Component {
             //self: {username: ''},
             user: this.props.location.user, // user should have all of its posts
             self: this.props.location.self,
-            posts: [],
+            //posts: [{text: 'hello'}, {text: 'meow'}],
+            posts: this.props.location.user.posts,
         }
+        /*if (this.state.user) {
+            this.setState({posts: this.state.user.posts})
+        }*/
     }
     // retrieve self and user here
     /*retrieveSelf() {
@@ -39,7 +43,7 @@ class Profile extends React.Component {
         //console.log(this.state.self);
     };*/
 
-    addFollower() {
+    /*addFollower() {
         if (this.state.user.username === this.state.self.username) {
             return;
         }
@@ -48,7 +52,7 @@ class Profile extends React.Component {
             body: { user: this.state.user, self: this.state.self }
         })
         // call express patch function or whatever
-    }
+    }*/
 
     /*retrievePosts() {
         for (let i = 0; i < this.state.user.posts.length; i++) {
@@ -77,10 +81,11 @@ class Profile extends React.Component {
                     <div className="profile-posts">
                         <h3>Posts</h3>
                     </div>
+                    <div>
+                        {this.state.user.posts.map(post => (<Comment_Reaction post={post} username={this.state.user.username}></Comment_Reaction>))}
+                     </div>
                 </div>
-                {/*<div class="posts">
-                    {this.user.posts.map(post => (<Comment_Reaction id={post.id} text={post.text} username={this.state.user.username}></Comment_Reaction>))}
-                 </div>*/}
+                
             </div>
         );
     }
