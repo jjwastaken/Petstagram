@@ -11,6 +11,7 @@ class Signin extends React.Component
 		super(props);
 		this.state = {
 			username: '',
+			user: null,
 		}
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -23,6 +24,16 @@ class Signin extends React.Component
 		const data = {
 			username: this.state.username,
 		}
+
+		// this.state.username = username that the user input
+		// retrieve the user object corresponding the this username from the database
+			// fetch(
+
+			//) -> return the user object corresponding to the username
+		// compare user object password with this.state.password
+		// 
+
+		// only call this if passwords match
 		fetch("http://localhost:3001/self", {
 			method: 'POST',
 			mode: 'cors',

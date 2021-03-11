@@ -1,22 +1,66 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './profile.css';
+import PostFeed from './PostFeed.js'
+import Comment_Reaction from './comment_reaction';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user,
-            self: props.self,
+            //username: this.props.match.params.username,
+            //user: {username: ''},
+            //self: {username: ''},
+            user: this.props.location.user, // user should have all of its posts
+            self: this.props.location.self,
+            posts: [],
         }
     }
+    // retrieve self and user here
+    /*retrieveSelf() {
+        fetch("http://localhost:3001/self")
+			.then(response => response.json())
+			.then(response => this.setState({ self: response }))
+            //.then(response => console.log(this.state.self));
+    };
+    retrieveUser() {
+        const username = this.props.match.params.username;
+        console.log(username);
+        fetch(`http://localhost:3001/profiles/${username}`)
+            .then(response => response.json())
+            .then(response => this.setState({ user: response }))
+            //.then(data => console.log(data));
+    };
+    componentDidMount() {
+        //this.retrieveSelf();
+        this.retrieveUser();
+        //this.setState({user: {username: 'meowmeow'}});
+        console.log(this.state.user);
+        //console.log(this.state.self);
+    };*/
 
-    /*addFollower() {
+    addFollower() {
         if (this.state.user.username === this.state.self.username) {
             return;
         }
-        fetch('/profiles/:user/:self')
+        fetch('http://localhost:3001/profiles', {
+            method: 'PUT',
+            body: { user: this.state.user, self: this.state.self }
+        })
         // call express patch function or whatever
+    }
+
+    /*retrievePosts() {
+        for (let i = 0; i < this.state.user.posts.length; i++) {
+            postID = this.state.user.posts[i];
+            fetch(`http://localhost:3001/posts/${postID}`)
+                .then(res => res.json())
+                .then(res => this.setState({posts: posts.concat(res)}))
+        }
+    }
+
+    componentDidMount() {
+        this.retrievePosts();
     }*/
 
     render() {
@@ -25,7 +69,6 @@ class Profile extends React.Component {
                 <div class="user-info">
                     <div className="profile-picture" />
                     <h2>{this.state.user.username}</h2>
-                    <h4>bio</h4>
                     <div className="follow-info">
                         <h3>Following</h3>
                         <button className="follow-button" onClick={() => this.addFollower()}>+</button>
@@ -35,6 +78,9 @@ class Profile extends React.Component {
                         <h3>Posts</h3>
                     </div>
                 </div>
+                {/*<div class="posts">
+                    {this.user.posts.map(post => (<Comment_Reaction id={post.id} text={post.text} username={this.state.user.username}></Comment_Reaction>))}
+                 </div>*/}
             </div>
         );
     }

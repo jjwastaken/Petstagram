@@ -18,16 +18,14 @@ class Main extends React.Component
 		};
 	}
 
-
-	callAPI() {
+	/*callAPI() {
 		fetch("http://localhost:3001/self")
-			.then(res => res.json())
-			.then(res => this.setState({ self: res }));
+			.then(response => response.json())
+			.then(response => this.setState({ self: response }))
 	}
-
-	componentWillMount() {
+	componentDidMount() {
 		this.callAPI();
-	}
+	}*/
 
 	// pass in a user object to the Profile component
 	render() 
@@ -40,8 +38,9 @@ class Main extends React.Component
 					<Route exact path='/main'>
 						<PostFeed />
 					</Route>
-					<Route exact path='/profile'>
-						<Profile user={this.state.self} self={this.state.self}/>
+					{/*<Route path='/profile/:username' component={Profile}>*/}
+					<Route path='/profile/:username' component={Profile}>
+						{/*<Profile user={this.state.self} self={this.state.self}/>*/}
 					</Route>
 				</Switch>
 				</div>
