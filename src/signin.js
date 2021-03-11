@@ -127,6 +127,9 @@ class Signin extends React.Component
 			password: '',
 			user: '',
 			pw: '',
+			click: false,
+			tempu : '',
+			tempp :'',
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeP = this.handleChangeP.bind(this);
@@ -174,31 +177,54 @@ class Signin extends React.Component
         fetch(`http://localhost:3001/profiles/${username}`)
 			//.then(response => console.log(response.json()))
             .then(response => response.json())
-            .then(response => this.setState({ 
+            .then(response => 
+			this.setState({ 
 				user: response.username, 
 				pw: response.password
-			}, () => {
-				//console.log(this.state.user)
-				//console.log(this.state.pw)
+			}, () => { 
+				console.log(this.state.user)
+				console.log(this.state.pw)
 			}));
     }
 	
 	checkOnClick()
 	{
-		if (this.state.user == this.state.username) 
+		if ((this.state.user == this.state.username) && this.state.user != "") 
 		{
 			if (this.state.pw == this.state.password)
 			{
 				this.handleSubmit()
-				return "/main"
+				return "/main";
 			}
 		}
-		return "/"
+		return "/";
 	}
 	
 	handleSubmit()
 	{
 		return this.saveSelf();
+	}
+	
+	click()
+	{
+		if(!this.state.click)
+		{
+			
+			this.setState({ 
+				tempu: this.state.user,
+				tempp: this.state.pw
+			}, () => { 
+			});
+			
+			if (this.state.tempu == "")
+			{
+				console.log(this.state.user)
+			}
+		}
+		else
+		{
+			return 
+		}
 	}
 
 	render()
@@ -215,16 +241,16 @@ class Signin extends React.Component
 							<h2 class = "signin-label"> EMAIL </h2>
 							<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
 						</form>
-				
+
 						<form>
 							<h3 class ="signin-label"> PASSWORD </h3>
 							<input type="form_i" value={this.state.password} onChange={this.handleChangeP}/>
 						</form>
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
-						
-						<Link type="submit_i" to = {page} onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
-						
+
+						<Link type="submit_i" to = {page} onClick={() => this.click(), this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
+
 					</div>
 					
 					<img class = "signin-logo" src = {logo} width="75"/>
