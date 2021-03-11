@@ -10,10 +10,14 @@ class Signup extends React.Component
 		super(props)
 		this.state = {
 			username: '',
-			password: ''
+			password: '',
+			password2: '',
+			warning: true,
+			success: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangePass = this.handleChangePass.bind(this);
+		this.handleChangePass2 = this.handleChangePass2.bind(this);
 	}
 
 	handleChange(e) {
@@ -22,6 +26,10 @@ class Signup extends React.Component
 
 	handleChangePass(e) {
 		this.setState({password: e.target.value})
+	}
+
+	handleChangePass2(e) {
+		this.setState({password2: e.target.value})
 	}
 
 	// maybe move this to a separate file
@@ -44,33 +52,52 @@ class Signup extends React.Component
 			.then(res => console.log(res))
 	}
 
+	checkPassword() {
+  
+            if (this.state.password != '' && this.state.password != ''){
+            	this.state.warning = false;
+				if (this.state.password == this.state.password2) {
+					this.addNewUser();
+					this.state.username = '';
+					this.state.success = true;
+				}
+				//console.log(this.state.password, this.state.password2);
+				this.state.password = '';
+				this.state.password2 = '';
+            } 
+	}
+
 	render()
 	{
+		const vis_style = this.state.warning ? 'hidden' : 'visible';
+		const message = this.state.success ? 'Account created! Go to the sign in page to login.' : 'Passwords do not match. Please try again!'
 		return (
 			<body class = "signup-container"> 
-				<div class = "signup-shadow"> </div>
 				
 				<div class = "signup-window"> 
 					<h1 class = "signup-header"> New Account </h1>	
 						
 					<form>
-						<h2 class = "signup-label"> EMAIL </h2>
-						<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
+						<h2 class = "signup-label"> USERNAME </h2>
+						<input type="text" value={this.state.username} onChange={this.handleChange}/>
 					</form>
 			
 					<form>
 						<h3 class ="signup-label"> PASSWORD </h3>
-						<input type="form_i" value={this.state.password} onChange={this.handleChangePass}/>
+						<input type="text" value={this.state.password} onChange={this.handleChangePass}/>
 					</form>
 				
 					<form>
 						<h3 class ="signup-label"> VERIFY PASSWORD </h3>
-						<input type="form_i"/>
+						<input id='ending' type="text" value={this.state.password2} onChange={this.handleChangePass2}/>
 					</form>
 					
-					<Link type="submit_i" to = {"/signin"} onClick={() => this.addNewUser()} style={{color: '#282b30'}}> Submit </Link>
+					<Link type="submit_i" onClick={() => this.checkPassword()} style={{color: '#282b30'}}> Submit </Link>
+					<Link type="submit_j" to = {"/signin"} style={{color: '#282b30'}}> Go back </Link>
+                    
 
 				</div>
+				<h5 id="warning" style={{visibility: vis_style}}> {message} </h5>
 				<img class = "signup-logo" src = {logo} width="75"/>
 				
 			</body>
