@@ -8,21 +8,26 @@ class Comment_Reaction extends React.Component {
     /*constructor(props) {
         super(props);
         this.state = {
-            post: null,
+            post: {id: ''},
             comment: '',
         }
     }
 
     // retrieve post information
     retrievePost() {
+        const postID = this.state.post.id;
         fetch(`http://localhost:3001/posts/${postID}`)
             .then(res => res.json())
             .then(res => this.setState({post: res}))
     }
 
+    componentDidMount() {
+        this.retrievePost();
+    }
+
     // also patch post information to add thumbs up, heart, laugh, comments
 
-    handleLike(e) {
+    /*handleLike(e) {
         this.patchPost(likes, this.state.post.likes + 1)
         fetch('http://localhost:3001/posts', {
             method: 'PATCH',
@@ -43,6 +48,10 @@ class Comment_Reaction extends React.Component {
     
     handleCommentChange(e) {
         this.setState({comment: e.target.value});
+    }
+
+    updateComments() {
+        
     }*/
 
     render() {

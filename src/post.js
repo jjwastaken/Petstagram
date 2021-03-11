@@ -10,6 +10,7 @@ class Post extends React.Component {
 		this.state = {
 			text: '',
             self: {username: ''},
+            curPost: {},
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -27,12 +28,18 @@ class Post extends React.Component {
 	handleChange(e) {
 		this.setState({text: e.target.value})
 	}
+    
+    // keep an array of users who liked it?
 
 	addNewPost() {
-		const text = {
+		var text = {
 			text: this.state.text,
             id: 1,
             username: this.state.self.username,
+            numLikes: 0,
+            numHearts: 0,
+            numLaughs: 0,
+            comments: [],
 		}
 		fetch("http://localhost:3001/posts", {
 			method: 'POST',
@@ -42,8 +49,16 @@ class Post extends React.Component {
 			},
 			body: JSON.stringify(text)
 		})
-			.then(res => res.json())
-			.then(res => console.log(res));
+            .then(res => res.json())
+            /*.then(res => fetch("http://localhost:3001/profiles", {
+                method: 'PATCH',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({username: this.state.self.username, post: res})
+            }))*/
+        //console.log(text);
         
         // update posts of self too
         fetch("http://localhost:3001/profiles", {

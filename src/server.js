@@ -47,11 +47,17 @@ var self = {
 
 app.post('/posts', async (request, response) => {
     const post = request.body;
-    post.id = currentId;
-    currentId++;
-    comment.push(post);
+    /*post.id = currentId;
+    currentId++;*/
+    //comment.push(post);
+    //const newPost = await posts.set(post);
     await posts.doc(post.text).set(post);
-    response.send({ success: true });
+    /*posts.doc(newPost.id)
+        .update({
+            id: newPost.id
+        });
+    response.send(newPost);*/
+    //response.send({ success: true });
 });
 
 app.get('/posts', (request, response) => {
@@ -60,6 +66,15 @@ app.get('/posts', (request, response) => {
     .then(function(querySnapshot) {
         response.send(querySnapshot.docs.map(doc => doc.data()));
     });
+})
+
+app.get('/post/:postID', (request, response) => {
+    const postID = request.params.postID;
+    posts.doc(postID)
+        .get()
+        .then(snap => {
+            response.send(snap.data());
+        })
 })
 
 app.get('/profiles/:username', async (request, response) => {
@@ -130,6 +145,17 @@ app.post('/profiles', async (request, response) => {
     await profiles.doc(user.username).set(user);
     response.send({ success: true });
 });
+
+app.patch('/profiles', (request, response) => {
+    const username = request.body.username;
+    const post = request.body.post;
+    //console.log(post);
+    profiles.doc(username)
+        .update({
+            posts: admin.firestore.FieldValue.arrayUnion(post)
+        });
+    //console.log(post);
+})
 
 /*app.put('/profiles', (request, response) => {
     const user = request.body.user;
