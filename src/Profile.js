@@ -72,21 +72,13 @@ class Profile extends React.Component {
             <div class="profile-page">
                 <div class="user-info">
                     <div className="profile-picture" />
-                    <h2>{this.state.user.username}</h2>
-                    <div className="follow-info">
-                        <h3>Following</h3>
-                        <button className="follow-button" onClick={() => this.addFollower()}>+</button>
-                        <h3>Followers</h3>
-                    </div>
-                    <div className="profile-posts">
-                        <h3>Posts</h3>
-                    </div>
-                    <div>
+                    <h2>{this.state.user.username}'s posts</h2>
+                </div>
+                <div class="profPosts" >
                         {this.state.user.posts.map(post => (<Comment_Reaction post={post} username={this.state.user.username}></Comment_Reaction>))}
                      </div>
-                </div>
-                
             </div>
+            
         );
     }
 }

@@ -221,7 +221,7 @@ class Signin extends React.Component
 						<h1 class = "signin-header"> User Login </h1>	
 							
 						<form>
-							<h2 class = "signin-label"> EMAIL </h2>
+							<h2 class = "signin-label"> USERNAME </h2>
 							<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
 						</form>
 
