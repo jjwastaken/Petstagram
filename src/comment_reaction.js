@@ -65,6 +65,19 @@ class Comment_Reaction extends React.Component {
     
 
     render() {
+        function Comment(props) {
+            return (
+              <div className="Comment">
+                  <img className="picture"/>
+                  <div className="name">
+                    {props.username}
+                    </div>
+                <form className="comment" type="comment">
+                  {props.text}
+                </form>
+              </div>
+            );
+          }
         return (
             <div class='metacontainer'>
             	<img class="picture" width="60" height="60" alt="" />
@@ -74,8 +87,9 @@ class Comment_Reaction extends React.Component {
                     <button id='thumbsup'></button>
                     <button id='heart'></button>
                     <button id='laugh'></button>
-                    <textarea class="comment" placeholder= 'Type here...' value={this.state.comment} onChange={this.handleCommentChange}>
-                    </textarea>
+                    <form>
+                        <Comment placeholder= 'Type here...' value={this.state.comment} onChange={this.handleCommentChange}/>
+                    </form>
                     <button id='send' onClick={() => this.addNewComment()}></button>
                 </div>
             </div>
