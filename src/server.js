@@ -20,16 +20,10 @@ const db = admin.firestore();
 const profiles = db.collection('profiles');
 const posts = db.collection('posts');
 
-const comment = [
-    {
-        text: 'text',
-    }
-];
-
 const users = [
     {
-        username: 'albertbabycat',
-        password: '12345',
+        username: '',
+        password: '',
         // followers and following can be arrays of usernames
         // will just have to deal with retrieval elsewhere
         followers: [],
@@ -39,7 +33,9 @@ const users = [
 ];
 let currentId = 1;
 
-var self = {username: "allison"};
+var self = {
+	username : ""
+};
 
 // configure firebase app
 
@@ -49,22 +45,13 @@ var self = {username: "allison"};
     return ref.once('value').then(snap => snap.val());
 }*/
 
-app.post('/posts', async (request, response) => {
-    const post = request.body;
-    post.id = currentId;
-    currentId++;
-    comment.push(post);
-    await posts.doc(post.text).set(post);
-    response.send({ success: true });
-});
-
 app.get('/profiles/:username', (request, response) => {
     const username = request.params.username;
     //const taskRef = await profiles.doc(username).get();
     profiles.doc(username)
         .get()
-        .then(function(doc) {
-            response.send(doc.data())
+        .then(snap => {
+            response.send(snap.data())
         });
     //response.send(request.params.username);
     /*for (let i = 0; i < users.length; i++) {
@@ -80,6 +67,8 @@ app.get('/profiles/:username', (request, response) => {
 // save self
 app.post('/self', async (request, response) => {
     const username = request.body.username;
+	//console.log("entered");
+	//console.log(username);
     /*for (let i = 0; i < users.length; i++) {
         if (users[i].username === username) {
             self = users[i]
@@ -87,22 +76,23 @@ app.post('/self', async (request, response) => {
             return;
         }
     }*/
-    const profileRef = await profiles.doc(username).get();
-    self = profileRef.data();
-    response.send( { success: true });
+	if (username != "")
+	{
+		const profileRef = await profiles.doc(username).get();
+		self = profileRef.data();
+	}
+	//response.send( { success: true });
 });
 
 // get self
 app.get('/self', (request, response) => {
-    //response.send({username: "123"});
+	const username = request.params.username;
     if (self) {
         profiles.doc(self.username)
             .get()
-            .then(function(doc) {
-                response.send(doc.data())
+			.then(snap => {
+				response.send(snap.data())
             });
-        /*const profileRef = await profiles.doc(self.username).get();
-        response.send(profileRef.data());*/
     }
 })
 
@@ -118,16 +108,6 @@ app.post('/profiles', async (request, response) => {
     await profiles.doc(user.username).set(user);
     response.send({ success: true });
 });
-
-app.patch('/profiles', (request, response) => {
-    const username = request.body.username;
-    const post = request.body.post;
-    //console.log(post);
-    profiles.doc(username)
-        .update({
-            posts: admin.firestore.FieldValue.arrayUnion(post)
-        });
-})
 
 /*app.put('/profiles', (request, response) => {
     const user = request.body.user;
