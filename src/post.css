@@ -39,7 +39,7 @@
 
 }
 
-.comment{
+.comment2{
 	margin: auto auto 0 auto;
     text-align: left;
     font-size: 1em;
@@ -47,8 +47,11 @@
     width: 50%;
     height:100%;
     display: inline-block;
-    margin-top: 40px;
+    margin-top: 15px;
     border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+
 }
 
 button {

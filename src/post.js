@@ -78,7 +78,7 @@ class Post extends React.Component {
             	<div class="name">{this.state.self.username}</div>
             	<div class='text'>
                     <form>
-                            <input type="comment" class="comment" placeholder= 'Make a post!' value={this.state.text} onChange={this.handleChange}/>
+                            <input type="comment2" class="comment2" placeholder= 'Make a post!' value={this.state.text} onChange={this.handleChange}/>
                             <button id='button' onClick={() => this.addNewPost()}>Post</button>
                     </form>
                 </div>
