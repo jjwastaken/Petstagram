@@ -19,6 +19,12 @@ html,body {
   border-radius: 3em;
 }
 
+.profile-posts{
+  display: inline;
+  border: none;
+  margin: auto;
+
+}
 .profile-picture {
   margin: auto;
   background-image: url("./defaultpic.png");
@@ -27,12 +33,14 @@ html,body {
   height: 150px;
   border-radius: 5em;
   position: relative;
+  
 }
 .profPosts {
   height: 1000px;
   margin-left: 15px;
   position: absolute;
   object-fit: cover;
+  width: 100%;
 
 }
 
@@ -48,11 +56,11 @@ html,body {
 
 .user-info {
   text-align: center;
-  
-  /*align-items: center;
-  align-content: center;*/
+  border: 3px solid black;
+  border-radius: 3em;
+  box-shadow: 5px 10px black;
+  color: #1e2124;
+  width: 100%;
 }
-.follow-info {
-  display: flex;
-  justify-content: space-around;
-}
+
+

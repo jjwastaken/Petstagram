@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.JPG'; 
 import './signin.css';
 
@@ -127,6 +127,12 @@ class Signin extends React.Component
 			password: '',
 			user: '',
 			pw: '',
+			click: false,
+			tempu : '',
+			tempp :'',
+			warning: false,
+			case1: false,
+			clicked: false
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeP = this.handleChangeP.bind(this);
@@ -134,10 +140,12 @@ class Signin extends React.Component
 	}
 
 	handleChange(e) {
+		this.state.clicked = false;
 		this.setState({username: e.target.value})
 	}
 	
 	handleChangeP(e) {
+		this.state.clicked = false;
 		this.setState({password: e.target.value})
 	}
 
@@ -190,9 +198,19 @@ class Signin extends React.Component
 		{
 			if (this.state.pw == this.state.password)
 			{
+                this.warning = false;
 				this.handleSubmit()
 				return "/main";
+				//console.log(4)
+			} else {
+				this.state.warning = true;
+				this.state.case1 = true;
+				//console.log(1)
 			}
+		} else if (this.state.username !== '' && this.state.password !== '') {
+			this.state.warning = true;
+			this.state.case1 = false;
+			//console.log(2);
 		}
 		return "/";
 	}
@@ -201,10 +219,27 @@ class Signin extends React.Component
 	{
 		return this.saveSelf();
 	}
+	
+	click()
+	{
+		this.retrieveUser();
+		this.state.clicked = true;
+		//console.log(3);
+	}
+
+	reset_click() {
+		this.state.clicked = false;
+		this.state.warning = false;
+	}
 
 	render()
 	{
+		//console.log(this.state.warning, "w");
+		//console.log(this.state.clicked, "c");
+		const vis_style = (this.state.warning && this.state.clicked == true) ? 'visible' : 'hidden';
+		const message = this.state.case1 ? 'Invalid password. Please try again!' : 'This account does not exist. Please register a new account!';
 		var page = this.checkOnClick();
+		//console.log(vis_style);
 		return (
 				<body class = "signin-container">
 					<div class = "signin-shadow"> </div>
@@ -213,13 +248,17 @@ class Signin extends React.Component
 						<h1 class = "signin-header"> User Login </h1>	
 							
 						<form>
-							<h2 class = "signin-label"> EMAIL </h2>
-							<input type="form_i" value={this.state.username} onChange={this.handleChange}/>
+							<h2 class = "signin-label"> USERNAME </h2>
+							<div class = "username">
+							<input type="form_control" value={this.state.username} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
+							</div>
 						</form>
 
 						<form>
 							<h3 class ="signin-label"> PASSWORD </h3>
-							<input type="form_i" value={this.state.password} onChange={this.handleChangeP}/>
+							<div class = "username">
+							<input type="password" value={this.state.password} onChange={this.handleChangeP} onkeydown={() => this.reset_click}/>
+							</div>
 						</form>
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
@@ -229,7 +268,7 @@ class Signin extends React.Component
 					</div>
 					
 					<img class = "signin-logo" src = {logo} width="75"/>
-					
+					<h5 id="warning" style={{visibility: vis_style}}> {message} </h5>
 				</body>
 		);
 	}
