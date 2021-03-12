@@ -4,7 +4,11 @@ CS 97 Winter 2021 Eggert
 
 ## Contributors: 
 
-JJ Choon, Richard Lee, Stephanie Shin, Estee Tcheau, Allison Zhang
+JJ Choon  
+Richard Lee  
+Stephanie Shin  
+Estee Tcheau  
+Allison Zhang
 
 ## What is Petstagram?
 
@@ -18,13 +22,13 @@ git clone https://github.com/jjwastaken/Petstagram
 
 ### 2. In the project directory, install the dependencies
 
-npm install
-npm start
+npm install  
+npm start   
 
 ### 3. In the project directory, start the server
 
-npm install
-node src/server.js
+npm install  
+node src/server.js  
 
 Note, you will likely need to open 2 separate command line windows for steps 2 and 3.
 
