@@ -51,9 +51,25 @@ class NavBar extends React.Component {
         this.retrieveUser();
         this.props.history.push('/profile');
     }*/
-
-    
-
+	
+	/*
+	gotoProfile()
+	{
+		const name = this.state.search
+		const link = "/profile/"
+		const profile = link.concat(name)
+		console.log(profile)
+		console.log(this.state.usersname)
+		if(profile != "/profile/")
+		{
+			return `/profile/${this.state.usersname}`
+		}
+		else
+		{
+			return "/main"
+		}
+	}
+	*/
     render() {
         return (
             <nav class="navbar">

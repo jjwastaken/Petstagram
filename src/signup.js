@@ -80,10 +80,13 @@ class Signup extends React.Component
 						this.state.username = '';
 						this.state.success = true;
 					}
-					this.addNewUser();
-					this.state.username = '';
-					this.state.success = true;
-				} else {
+					else
+					{
+						this.state.success = false;
+					}
+				} 
+				else 
+				{
 					this.state.success = false;
 				}
 				//console.log(this.state.password, this.state.password2);
