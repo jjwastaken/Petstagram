@@ -29,7 +29,7 @@ class PostFeed extends React.Component
                 <Post />
               </div>
               <div>
-                {this.state.posts.map(post => (<Comment_Reaction post={post}></Comment_Reaction>))}
+                {this.state.posts.map(post => (<Comment_Reaction post={post} noComments={false}></Comment_Reaction>))}
                 {/*<Comment_Reaction post={{text: 'hello'}} username="crazydaisy"/>
                 <Comment_Reaction post={{text: 'good evening'}} username="crazydaisy"/>*/}
               </div>

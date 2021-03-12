@@ -13,8 +13,10 @@ class Profile extends React.Component {
             //self: {username: ''},
             user: this.props.location.user, // user should have all of its posts
             self: this.props.location.self,
+            /*testSelf: {username: ''},
+            testUser: {username: ''},*/
             //posts: [{text: 'hello'}, {text: 'meow'}],
-            posts: this.props.location.user.posts,
+            posts: [],
         }
         /*if (this.state.user) {
             this.setState({posts: this.state.user.posts})
@@ -24,7 +26,7 @@ class Profile extends React.Component {
     /*retrieveSelf() {
         fetch("http://localhost:3001/self")
 			.then(response => response.json())
-			.then(response => this.setState({ self: response }))
+			.then(response => this.setState({ testSelf: response }))
             //.then(response => console.log(this.state.self));
     };
     retrieveUser() {
@@ -32,10 +34,10 @@ class Profile extends React.Component {
         console.log(username);
         fetch(`http://localhost:3001/profiles/${username}`)
             .then(response => response.json())
-            .then(response => this.setState({ user: response }))
+            .then(response => this.setState({ testUser: response }))
             //.then(data => console.log(data));
-    };
-    componentDidMount() {
+    };*/
+    /*componentDidMount() {
         //this.retrieveSelf();
         this.retrieveUser();
         //this.setState({user: {username: 'meowmeow'}});
@@ -54,18 +56,24 @@ class Profile extends React.Component {
         // call express patch function or whatever
     }*/
 
-    /*retrievePosts() {
-        for (let i = 0; i < this.state.user.posts.length; i++) {
+    retrievePosts() {
+        /*for (let i = 0; i < this.state.user.posts.length; i++) {
             postID = this.state.user.posts[i];
             fetch(`http://localhost:3001/posts/${postID}`)
                 .then(res => res.json())
                 .then(res => this.setState({posts: posts.concat(res)}))
-        }
+        }*/
+        const username = this.state.user.username;
+        fetch(`http://localhost:3001/posts/${username}`)
+            .then(response => response.json())
+            .then(response => this.setState({posts: response}))
     }
 
     componentDidMount() {
+        /*this.retrieveUser();
+        console.log(this.state.testUser);*/
         this.retrievePosts();
-    }*/
+    }
 
     render() {
         return (
@@ -75,7 +83,7 @@ class Profile extends React.Component {
                     <h2>{this.state.user.username}'s posts</h2>
                 </div>
                 <div class="profPosts" >
-                        {this.state.user.posts.map(post => (<Comment_Reaction post={post} username={this.state.user.username}></Comment_Reaction>))}
+                        {this.state.posts.map(post => (<Comment_Reaction post={post} noComments={false}></Comment_Reaction>))}
                      </div>
             </div>
             

@@ -69,14 +69,27 @@ app.get('/posts', (request, response) => {
     });
 })
 
-app.get('/posts/:postID', (request, response) => {
+/*app.get('/posts/:postID', (request, response) => {
     const postID = request.params.postID;
     posts.doc(postID)
         .get()
         .then(snap => {
             response.send(snap.data());
         })
-})
+})*/
+
+// perform a query to return a subcollection
+app.get('/posts/:username', (request, response) => {
+    const username = request.params.username;
+    db.collection("posts")
+        .where("username", "==", username)
+        .get()
+        .then(function(querySnapshot) {
+            //querySnapshot.
+            //forEach(doc => { console.log(doc.data())});
+            response.send(querySnapshot.docs.map(doc => doc.data()))
+        })
+});
 
 app.patch('/posts', (request, response) => {
     const postID = request.body.postID;
