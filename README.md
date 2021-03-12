@@ -30,7 +30,8 @@ npm start
 npm install
 node src/server.js
 
-* Note, you will likely need to open 2 separate command line windows for steps 2 and 3*
+Note, you will likely need to open 2 separate command line windows for steps 2 and 3.
 
 ### 4. Open the local host
-Got o http://localhost:3000 in your browser to start the application!
+
+Go to http://localhost:3000 in your browser to start the application!
