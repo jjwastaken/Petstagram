@@ -16,7 +16,7 @@ Allison Zhang
 
 Petstagram is a social media application for your furry friends! Similar to facebook, create accounts, sign in, write posts, and make comments on your friends' posts.
 
-## How to use our application
+## How to run the app locally
 
 #### 1. Clone our repository by running
 
@@ -36,6 +36,6 @@ Petstagram is a social media application for your furry friends! Similar to face
 
 Note, you will likely need to open 2 separate command line windows for steps 2 and 3.
 
-### 4. Open the local host
+#### 4. Open the local host
 
 Go to http://localhost:3000 in your browser to start the application!
