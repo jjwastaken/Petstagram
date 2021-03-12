@@ -37,7 +37,6 @@ class NavBar extends React.Component {
 
     async retrieveUser() {
         const username = this.state.search;
-        console.log(username);
         fetch(`http://localhost:3001/profiles/${username}`)
             .then(response => response.json())
             //.then(response => this.setState({ userSearch: response, usersname: response.username }));
