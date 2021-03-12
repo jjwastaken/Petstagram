@@ -18,19 +18,19 @@ Petstagram is a social media application for your furry friends! Similar to face
 
 ## How to use our application
 
-### 1. Clone our repository by running
+#### 1. Clone our repository by running
 
-`git clone https://github.com/jjwastaken/Petstagram`
+`git clone https://github.com/jjwastaken/Petstagram.git`
 
-### 2. In the project directory, install the dependencies by running
+#### 2. In the project directory, install the dependencies by running
 
 `npm install` 
 
-### 3. In the project directory, run the app in development mode by running
+#### 3. In the project directory, run the app in development mode by running
 
 `npm start`   
 
-### 3. In the project directory, start the server by running
+#### 4. In the project directory, start the server by running
 
 `node src/server.js`  
 
