@@ -10,6 +10,8 @@ class Comment_Reaction extends React.Component {
         this.state = {
             post: this.props.post,
             comment: '',
+            temp_comment: 'wow super cool!',
+            style: 'visible'
         }
         this.handleCommentChange = this.handleCommentChange.bind(this);
     }
@@ -28,10 +30,11 @@ class Comment_Reaction extends React.Component {
 
     handleCommentChange(e) {
         this.setState({comment: e.target.value});
+
     }
 
     addNewComment() {
-        fetch('http://localhost:3001/posts', {
+    	fetch('http://localhost:3001/posts', {
             method: 'PATCH',
             mode: 'cors',
             headers: {
@@ -62,6 +65,7 @@ class Comment_Reaction extends React.Component {
         this.setState({laughs: this.state.post.laughs + 1});
     }*/
     
+
     
 
     render() {
@@ -70,13 +74,21 @@ class Comment_Reaction extends React.Component {
             	<img class="picture" width="60" height="60" alt="" />
             	<div class="name">{this.props.post.username}</div>
             	<div class="sample">{this.props.post.text}</div>
+
+
+            	<div class="comment_post"  style={{visibility: this.state.style}} >
+            	  <img class="picture2" width="30" height="30" alt="" />
+            	  <div class="name2">{this.props.post.username}</div>
+            	  {this.state.temp_comment}
+            	  </div>
+            	<div class="comment_post"  style={{visibility: this.state.style}} >
+            	  <img class="picture2" width="30" height="30" alt="" />
+            	  <div class="name2">{this.props.post.username}</div>
+            	  {this.state.temp_comment}
+            	  </div>
                 <div class='container'>
-                    <button id='thumbsup'></button>
-                    <button id='heart'></button>
-                    <button id='laugh'></button>
-                    <textarea class="comment" placeholder= 'Type here...' value={this.state.comment} onChange={this.handleCommentChange}>
-                    </textarea>
-                    <button id='send' onClick={() => this.addNewComment()}></button>
+                    <input type="text" placeholder= 'Type here...' value={this.state.comment} onChange={this.handleCommentChange}/>
+                    <button type="reset" id='send'onClick={() => this.addNewComment()}></button>
                 </div>
             </div>
         );
