@@ -4,11 +4,7 @@ CS 97 Winter 2021 Eggert
 
 ## Contributors: 
 
-JJ Choon
-Richard Lee
-Stephanie Shin
-Estee Tcheau
-Allison Zhang
+JJ Choon, Richard Lee, Stephanie Shin, Estee Tcheau, Allison Zhang
 
 ## What is Petstagram?
 
