@@ -1,6 +1,8 @@
 # Petstagram
 
-CS 97 Winter 2021 Eggert
+CS 97  
+Winter 2021  
+Eggert  
 
 ## Contributors: 
 
