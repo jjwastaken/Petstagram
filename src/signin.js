@@ -205,12 +205,12 @@ class Signin extends React.Component
 			} else {
 				this.state.warning = true;
 				this.state.case1 = true;
-				//console.log(1)
+				console.log(1)
 			}
 		} else if (this.state.username !== '' && this.state.password !== '') {
 			this.state.warning = true;
 			this.state.case1 = false;
-			//console.log(2);
+			console.log(2);
 		}
 		return "/";
 	}
@@ -234,12 +234,11 @@ class Signin extends React.Component
 
 	render()
 	{
-		//console.log(this.state.warning, "w");
-		//console.log(this.state.clicked, "c");
+		console.log(this.state.warning, "w");
+		console.log(this.state.clicked, "c");
 		const vis_style = (this.state.warning && this.state.clicked == true) ? 'visible' : 'hidden';
 		const message = this.state.case1 ? 'Invalid password. Please try again!' : 'This account does not exist. Please register a new account!';
 		var page = this.checkOnClick();
-		//console.log(vis_style);
 		return (
 				<body class = "signin-container">
 					<div class = "signin-shadow"> </div>
@@ -263,7 +262,7 @@ class Signin extends React.Component
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
 
-						<Link type="submit_i" to = {page} onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
+						<Link type="submit_i" to = {page} onClick={() => this.click()} style={{color: '#282b30'}}> Submit </Link>
 
 					</div>
 					

@@ -60,14 +60,12 @@ class Signup extends React.Component
             .then(res => 
 			this.setState({
 				user: res.username, 
-			}, () => {
-				//console.log(this.state.user)
-				this.checkPassword()
-				//console.log(this.state.user)
-			}))
+			}
+			))
     )}
 	
 	checkPassword() {
+		    this.retrieveUser();
             if (this.state.password != '' && this.state.password != ''){
             	this.state.warning = false;
 				if (this.state.password == this.state.password2) {
@@ -127,7 +125,7 @@ class Signup extends React.Component
 						</div>
 					</form>
 					
-					<Link type="submit_i" onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
+					<Link type="submit_i" onClick={() => this.checkPassword()} style={{color: '#282b30'}}> Submit </Link>
 					<Link type="submit_j" to = {"/signin"} style={{color: '#282b30'}}> Go back </Link>
                     
 
