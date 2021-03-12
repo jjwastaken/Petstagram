@@ -245,7 +245,7 @@ class Signin extends React.Component
 					
 					<div class = "signin-window"> 
 						<h1 class = "signin-header"> User Login </h1>	
-							
+					<h6> Click the button twice if first try does not work! </h6>
 						<form>
 							<h2 class = "signin-label"> USERNAME </h2>
 							<div class = "username">
@@ -261,7 +261,7 @@ class Signin extends React.Component
 						</form>
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
-
+                        
 						<Link type="submit_i" to = {page} onClick={() => this.click()} style={{color: '#282b30'}}> Submit </Link>
 
 					</div>
