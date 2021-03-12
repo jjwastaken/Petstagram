@@ -10,10 +10,11 @@ class Signup extends React.Component
 		super(props)
 		this.state = {
 			username: '',
+			user: '',
 			password: '',
 			password2: '',
 			warning: true,
-			success: false
+			success: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangePass = this.handleChangePass.bind(this);
@@ -50,15 +51,35 @@ class Signup extends React.Component
 			.then(res => res.json())
 			.then(res => console.log(res))
 	}
-
+	
+	retrieveUser() {
+        const username = this.state.username;
+        //console.log(username);
+        fetch(`http://localhost:3001/profiles/${username}`)
+            .then(res => res.json()
+            .then(res => 
+			this.setState({
+				user: res.username, 
+			}, () => {
+				//console.log(this.state.user)
+				this.checkPassword()
+				//console.log(this.state.user)
+			}))
+    )}
+	
 	checkPassword() {
-  
             if (this.state.password != '' && this.state.password != ''){
             	this.state.warning = false;
 				if (this.state.password == this.state.password2) {
-					this.addNewUser();
-					this.state.username = '';
-					this.state.success = true;
+					if(this.state.username != this.state.user)
+					{
+						console.log(this.state.username)
+						console.log("")
+						console.log(this.state.user)
+						this.addNewUser();
+						this.state.username = '';
+						this.state.success = true;
+					}
 				}
 				//console.log(this.state.password, this.state.password2);
 				this.state.password = '';
@@ -69,7 +90,7 @@ class Signup extends React.Component
 	render()
 	{
 		const vis_style = this.state.warning ? 'hidden' : 'visible';
-		const message = this.state.success ? 'Account created! Go to the sign in page to login.' : 'Passwords do not match. Please try again!'
+		const message = this.state.success ? 'Account created! Go to the sign in page to login.' : 'Passwords do not match or username is taken. Please try again!'
 		return (
 			<body class = "signup-container"> 
 				
@@ -91,7 +112,7 @@ class Signup extends React.Component
 						<input id='ending' type="text" value={this.state.password2} onChange={this.handleChangePass2}/>
 					</form>
 					
-					<Link type="submit_i" onClick={() => this.checkPassword()} style={{color: '#282b30'}}> Submit </Link>
+					<Link type="submit_i" onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
 					<Link type="submit_j" to = {"/signin"} style={{color: '#282b30'}}> Go back </Link>
                     
 

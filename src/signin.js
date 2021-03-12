@@ -127,9 +127,6 @@ class Signin extends React.Component
 			password: '',
 			user: '',
 			pw: '',
-			click: false,
-			tempu : '',
-			tempp :'',
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeP = this.handleChangeP.bind(this);
@@ -204,11 +201,6 @@ class Signin extends React.Component
 	{
 		return this.saveSelf();
 	}
-	
-	click()
-	{
-		this.retrieveUser();
-	}
 
 	render()
 	{
@@ -232,7 +224,7 @@ class Signin extends React.Component
 						
 						<Link className="signin-newAccount" to={"/signup"} > Register an account </Link>
 
-						<Link type="submit_i" to = {page} onClick={() => this.click()} style={{color: '#282b30'}}> Submit </Link>
+						<Link type="submit_i" to = {page} onClick={() => this.retrieveUser()} style={{color: '#282b30'}}> Submit </Link>
 
 					</div>
 					

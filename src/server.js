@@ -87,12 +87,19 @@ app.patch('/posts', (request, response) => {
         })
 })
 
-app.get('/profiles/:username', async (request, response) => {
+app.get('/profiles/:username', (request, response) => {
     const username = request.params.username;
     profiles.doc(username)
         .get()
         .then(snap => {
-            response.send(snap.data())
+			if (snap.exists)
+			{
+				response.send(snap.data())
+			}
+			else
+			{
+				response.send(JSON.parse('{ "username":"richard", "password": "undefined"}'))
+			}
         });
     //const profileRef = await profiles.doc(username).get();
     //response.json(profileRef.data());
@@ -144,7 +151,7 @@ app.get('/self', (request, response) => {
 })
 
 app.get('/profiles', (req, res) => {
-    res.send(users);
+
 })
 
 app.post('/profiles', async (request, response) => {
